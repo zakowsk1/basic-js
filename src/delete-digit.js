@@ -1,19 +1,25 @@
 const { NotImplementedError } = require('../extensions/index.js');
 
 /**
- * Given some integer, find the maximal number you can obtain
- * by deleting exactly one digit of the given number.
+ * Finds the maximal number that can be obtained by deleting exactly one digit from the given number.
  *
- * @param {Number} n
- * @return {Number}
+ * @param {Number} n The original number.
+ * @return {Number} The maximal number after deleting one digit.
  *
  * @example
- * For n = 152, the output should be 52
- *
+ * deleteDigit(152) => 52
  */
-function deleteDigit(/* n */) {
-  throw new NotImplementedError('Not implemented');
-  // remove line with error and write your code here
+function deleteDigit(n) {
+  let maxNum = -Infinity;
+  let currentNum = 0;
+  const numStr = n.toString();
+
+  for (let i = 0; i < numStr.length; i++) {
+    currentNum = parseInt(numStr.slice(0, i) + numStr.slice(i + 1));
+    maxNum = Math.max(maxNum, currentNum);
+  }
+
+  return maxNum;
 }
 
 module.exports = {
